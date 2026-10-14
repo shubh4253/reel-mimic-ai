@@ -1,0 +1,50 @@
+{
+  "entities": {
+    "Project": {
+      "title": "Project",
+      "description": "User mimic video production project",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "brief": { "type": "string" },
+        "stage": { "type": "string" },
+        "reference_src": { "type": "string" },
+        "reference_name": { "type": "string" },
+        "created_at": { "type": "string" },
+        "updated_at": { "type": "string" },
+        "report": { "type": "object" },
+        "plan": { "type": "object" },
+        "pipeline": { "type": "object" },
+        "comments": { "type": "array" },
+        "chat": { "type": "array" },
+        "final_video_url": { "type": "string" }
+      },
+      "required": ["id", "userId", "title", "stage", "created_at"]
+    },
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Authenticated user profile",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["uid"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile document"
+    },
+    "/users/{userId}/projects/{projectId}": {
+      "schema": "Project",
+      "description": "User mimic video projects"
+    }
+  }
+}
